@@ -12,7 +12,7 @@
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Swisscom\Translationapi\Controller;
+namespace Sinso\Translationapi\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;

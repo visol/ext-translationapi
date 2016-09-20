@@ -9,7 +9,7 @@ $EM_CONF[$_EXTKEY] = array(
     'description' => 'API to fetch translation units.',
     'category' => 'service',
     'shy' => 0,
-    'version' => '0.0.1',
+    'version' => '0.0.2',
     'dependencies' => '',
     'conflicts' => '',
     'priority' => '',
@@ -30,7 +30,7 @@ $EM_CONF[$_EXTKEY] = array(
         'depends' => array(
             'typo3' => '7.6.0-7.6.99',
             'php' => '7.0.0-7.0.99',
-            'routing' => '',
+            'routing' => '0.3.0-',
         ),
         'conflicts' => array(
         ),
