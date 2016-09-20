@@ -1,0 +1,14 @@
+-
+  name: 'XLIFF exporter (with prefix)'
+  uriPattern: '{extensionKey}/{prefix}'
+  defaults:
+    '@package':    'Swisscom.Translationapi'
+    '@plugin':     'API'
+    '@controller': 'Xliff'
+-
+  name: 'XLIFF exporter'
+  uriPattern: '{extensionKey}'
+  defaults:
+    '@package':    'Swisscom.Translationapi'
+    '@plugin':     'API'
+    '@controller': 'Xliff'

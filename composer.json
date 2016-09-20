@@ -1,0 +1,25 @@
+{
+  "name": "swisscom/translationapi",
+  "description": "API to fetch translation units.",
+  "type": "typo3-cms-extension",
+  "version": "0.0.1",
+  "homepage": "",
+  "license": "GPL-2.0+",
+  "preferred-install": "dist",
+  "support": {
+    "irc": "",
+    "issues": ""
+  },
+  "require": {
+    "typo3-ter/routing": ">= 0.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Swisscom\\Translationapi\\": "Classes/"
+    }
+  },
+  "suggest": {
+  },
+  "require-dev": {
+  }
+}
