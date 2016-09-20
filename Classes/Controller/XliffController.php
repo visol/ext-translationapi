@@ -49,6 +49,10 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         return GeneralUtility::isFirstPartOfStr($key, $prefix . '.');
                     }, ARRAY_FILTER_USE_KEY);
                 }
+
+                // Sort by key, because it's prettier
+                ksort($labels);
+
                 header('Content-Type: application/json');
                 return json_encode($labels);
             }
