@@ -2,7 +2,7 @@
   "name": "sinso/translationapi",
   "description": "API to fetch translation units.",
   "type": "typo3-cms-extension",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "",
   "license": "GPL-2.0+",
   "preferred-install": "dist",
@@ -11,7 +11,7 @@
     "issues": ""
   },
   "require": {
-    "typo3-ter/routing": ">= 0.3.0"
+    "typo3-ter/routing": ">= 0.4.0"
   },
   "autoload": {
     "psr-4": {
