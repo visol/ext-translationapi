@@ -52,3 +52,9 @@ This extension is able to export the labels as JSON to be embedded into a HTML s
 
 </div>
 ```
+
+### Options
+
+* `?prefix=no` (default "`yes`") will strip the prefix from the key. E.g. with "module" as prefix,
+
+  key "module.foo.bar" will be returned as "foo.bar"

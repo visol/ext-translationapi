@@ -15,6 +15,7 @@
 namespace Sinso\Translationapi\Controller;
 
 use Sinso\Translationapi\Utility\LocalizationUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * XLIFF controller.
@@ -38,6 +39,16 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function exportAction($extensionKey, $prefix = '')
     {
         $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $GLOBALS['TSFE']->lang);
+
+        $keepPrefix = GeneralUtility::_GET('prefix');
+        if ($keepPrefix === 'no' && !empty($prefix)) {
+            $ret = [];
+            $stripLength = strlen($prefix) + 1;
+            foreach ($labels as $key => $value) {
+                $ret[substr($key, $stripLength)] = $value;
+            }
+            $labels = $ret;
+        }
 
         header('Content-Type: application/json');
         return json_encode($labels);
