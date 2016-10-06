@@ -50,6 +50,23 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $labels = $ret;
         }
 
+        $expand = GeneralUtility::_GET('expand');
+        if ($expand === 'yes') {
+            $ret = [];
+            foreach ($labels as $key => $value) {
+                $subkeys = explode('.', $key);
+                $ref = &$ret;
+                foreach ($subkeys as $subkey) {
+                    if (!isset($ref[$subkey])) {
+                        $ref[$subkey] = [];
+                    }
+                    $ref = &$ref[$subkey];
+                }
+                $ref = $value;
+            }
+            $labels = $ret;
+        }
+
         header('Content-Type: application/json');
         return json_encode($labels);
     }

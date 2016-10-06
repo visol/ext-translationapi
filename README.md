@@ -58,3 +58,27 @@ This extension is able to export the labels as JSON to be embedded into a HTML s
 * `?prefix=no` (default "`yes`") will strip the prefix from the key. E.g. with "module" as prefix,
 
   key "module.foo.bar" will be returned as "foo.bar"
+
+* `?expand=yes` (default "`no`") will "expand" the keys as subarrays:
+
+  ```
+  {
+      "module.foo.bar.key1": "value1",
+      "module.foo.bar.key2": "value2",
+  }
+  ```
+
+  becomes
+
+  ```
+  {
+      "module": {
+          "foo": {
+              "bar": {
+                  "key1": "value1",
+                  "key2": "value2"
+              }
+          }
+      }
+  }
+  ```
