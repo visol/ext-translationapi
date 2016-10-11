@@ -42,29 +42,12 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $omitPrefix = GeneralUtility::_GET('omitPrefix');
         if ($omitPrefix === 'yes' && !empty($prefix)) {
-            $ret = [];
-            $stripLength = strlen($prefix) + 1;
-            foreach ($labels as $key => $value) {
-                $ret[substr($key, $stripLength)] = $value;
-            }
-            $labels = $ret;
+            $labels = LocalizationUtility::stripPrefix($labels, $prefix);
         }
 
         $expand = GeneralUtility::_GET('expand');
         if ($expand === 'yes') {
-            $ret = [];
-            foreach ($labels as $key => $value) {
-                $subkeys = explode('.', $key);
-                $ref = &$ret;
-                foreach ($subkeys as $subkey) {
-                    if (!isset($ref[$subkey])) {
-                        $ref[$subkey] = [];
-                    }
-                    $ref = &$ref[$subkey];
-                }
-                $ref = $value;
-            }
-            $labels = $ret;
+            $labels = LocalizationUtility::expandKeys($labels);
         }
 
         header('Content-Type: application/json');

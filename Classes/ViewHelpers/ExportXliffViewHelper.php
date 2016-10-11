@@ -36,14 +36,18 @@ class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInte
      *
      * @param string $extensionKey
      * @param string $prefix
+     * @param bool $omitPrefix
+     * @param bool $expand
      * @return string
      */
-    public function render($extensionKey, $prefix = '')
+    public function render($extensionKey, $prefix = '', $omitPrefix = false, $expand = false)
     {
         return static::renderStatic(
             [
                 'extensionKey' => $extensionKey,
                 'prefix' => $prefix,
+                'omitPrefix' => $omitPrefix,
+                'expand' => $expand,
             ],
             $this->buildRenderChildrenClosure(),
             $this->renderingContext
@@ -66,6 +70,15 @@ class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInte
         }
 
         $labels = LocalizationUtility::getLabels($arguments['extensionKey'], $arguments['prefix'], $languageKey);
+
+        if ($arguments['omitPrefix'] && !empty($arguments['prefix'])) {
+            $labels = LocalizationUtility::stripPrefix($labels, $arguments['prefix']);
+        }
+
+        if ($arguments['expand']) {
+            $labels = LocalizationUtility::expandKeys($labels);
+        }
+
         return json_encode($labels);
     }
 
