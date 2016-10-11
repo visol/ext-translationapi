@@ -40,8 +40,8 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $GLOBALS['TSFE']->lang);
 
-        $keepPrefix = GeneralUtility::_GET('prefix');
-        if ($keepPrefix === 'no' && !empty($prefix)) {
+        $omitPrefix = GeneralUtility::_GET('omitPrefix');
+        if ($omitPrefix === 'yes' && !empty($prefix)) {
             $ret = [];
             $stripLength = strlen($prefix) + 1;
             foreach ($labels as $key => $value) {
