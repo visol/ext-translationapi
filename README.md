@@ -8,9 +8,13 @@ export labels as JSON from any `locallang.xlf` file, given its extension key.
 Please add following rewrite rules to your `.htaccess`:
 
 ```
-RewriteRule ^t3api/translation/de/(.*)$ /index.php?eID=routing&route=translationapi/$1&L=0 [QSA,L]
-RewriteRule ^t3api/translation/en/(.*)$ /index.php?eID=routing&route=translationapi/$1&L=1 [QSA,L]
-RewriteRule ^t3api/translation/fr/(.*)$ /index.php?eID=routing&route=translationapi/$1&L=2 [QSA,L]
+RewriteRule ^t3api/translation/(.*)$ /index.php?eID=routing&route=translationapi/$1 [QSA,L]
+```
+
+or nginx configuration
+
+```
+rewrite ^/t3api/translation/(.*)$ /index.php?eID=routing&route=translationapi/$1 last;
 ```
 
 ## How-To Use as Web Service

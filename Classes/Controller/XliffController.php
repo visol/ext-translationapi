@@ -33,12 +33,13 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * Export action.
      *
      * @param string $extensionKey
+     * @param string $languageKey
      * @param string $prefix
      * @return void
      */
-    public function exportAction($extensionKey, $prefix = '')
+    public function exportAction($extensionKey, $languageKey, $prefix = '')
     {
-        $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $GLOBALS['TSFE']->lang);
+        $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $languageKey);
 
         $omitPrefix = GeneralUtility::_GET('omitPrefix');
         if ($omitPrefix === 'yes' && !empty($prefix)) {

@@ -1,13 +1,13 @@
 -
   name: 'XLIFF exporter (with prefix)'
-  uriPattern: '{extensionKey}/{prefix}'
+  uriPattern: '{languageKey}/{extensionKey}/{prefix}'
   defaults:
     '@package':    'Sinso.Translationapi'
     '@plugin':     'API'
     '@controller': 'Xliff'
 -
   name: 'XLIFF exporter'
-  uriPattern: '{extensionKey}'
+  uriPattern: '{languageKey}/{extensionKey}'
   defaults:
     '@package':    'Sinso.Translationapi'
     '@plugin':     'API'
