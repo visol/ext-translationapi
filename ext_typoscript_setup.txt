@@ -1,0 +1,7 @@
+plugin {
+    tx_translationapi {
+        features {
+            requireCHashArgumentForActionArguments = 0
+        }
+    }
+}
