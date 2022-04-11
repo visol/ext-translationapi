@@ -29,15 +29,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
  */
 class LocalizationUtility
 {
-
-    /**
-     * @param string $extensionKey
-     * @param string $prefix
-     * @param string $languageKey
-     * @return array
-     * @throws \RuntimeException
-     */
-    public static function getLabels($extensionKey, $prefix = '', $languageKey = 'default')
+    public static function getLabels(string $extensionKey, string $prefix = '', string $languageKey = 'default'): array
     {
         if (ExtensionManagementUtility::isLoaded($extensionKey)) {
             $extensionPath = ExtensionManagementUtility::extPath($extensionKey);
@@ -62,12 +54,8 @@ class LocalizationUtility
 
     /**
      * Strips a prefix from the labels.
-     *
-     * @param array $labels
-     * @param string $prefix
-     * @return array
      */
-    public static function stripPrefix(array $labels, $prefix)
+    public static function stripPrefix(array $labels, string $prefix): array
     {
         $ret = [];
         $stripLength = strlen($prefix) + 1;
@@ -81,11 +69,8 @@ class LocalizationUtility
 
     /**
      * Expands the labels' keys.
-     *
-     * @param array $labels
-     * @return array
      */
-    public static function expandKeys(array $labels)
+    public static function expandKeys(array $labels): array
     {
         $ret = [];
 
@@ -106,12 +91,8 @@ class LocalizationUtility
 
     /**
      * Returns the labels of a given XLIFF file.
-     *
-     * @param string $languageFileName
-     * @param string $languageKey
-     * @return array
      */
-    protected static function extractXliffLabels($languageFileName, $languageKey = 'default')
+    protected static function extractXliffLabels(string $languageFileName, string $languageKey = 'default'): array
     {
         /** @var $languageFactory \TYPO3\CMS\Core\Localization\LocalizationFactory */
         $languageFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Localization\LocalizationFactory::class);

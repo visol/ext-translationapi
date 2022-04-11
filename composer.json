@@ -2,23 +2,21 @@
   "name": "visol/translationapi",
   "description": "API to fetch translation units.",
   "type": "typo3-cms-extension",
-  "homepage": "",
   "license": "GPL-2.0+",
   "preferred-install": "dist",
-  "support": {
-    "irc": "",
-    "issues": ""
-  },
+  "php": ">= 7.4",
   "require": {
-    "typo3-ter/routing": ">= 0.4.0"
+    "typo3/cms-core": "^11",
+    "lms/routes": "^3"
   },
   "autoload": {
     "psr-4": {
       "Sinso\\Translationapi\\": "Classes/"
     }
   },
-  "suggest": {
-  },
-  "require-dev": {
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "translationapi"
+    }
   }
 }

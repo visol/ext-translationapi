@@ -1,14 +1,18 @@
--
-  name: 'XLIFF exporter (with prefix)'
-  uriPattern: '{languageKey}/{extensionKey}/{prefix}'
+translation_api_export_with_prefix:
+  path: api/translation/{languageKey}/{extensionKey}/{prefix}
+  controller: Sinso\Translationapi\Controller\XliffController::export
+  format: json
+  requirements:
+    languageKey: '[a-z]{2}'
   defaults:
-    '@package':    'Sinso.Translationapi'
-    '@plugin':     'API'
-    '@controller': 'Xliff'
--
-  name: 'XLIFF exporter'
-  uriPattern: '{languageKey}/{extensionKey}'
+    plugin: API
+
+translation_api_export:
+  path: api/translation/{languageKey}/{extensionKey}
+  controller: Sinso\Translationapi\Controller\XliffController::export
+  format: json
+  requirements:
+    languageKey: '[a-z]{2}'
+    extensionKey: '.*'
   defaults:
-    '@package':    'Sinso.Translationapi'
-    '@plugin':     'API'
-    '@controller': 'Xliff'
+    plugin: API

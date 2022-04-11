@@ -14,21 +14,15 @@
 
 namespace Sinso\Translationapi\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Fluid\Core\ViewHelper\Facets\CompilableInterface;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
 use Sinso\Translationapi\Utility\LocalizationUtility;
+use TYPO3\CMS\Core\Http\ApplicationType;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Export as JSON.
- *
- * @category    ViewHelpers
- * @package     TYPO3
- * @subpackage  tx_translationapi
- * @author      Xavier Perseguers <xavier@causal.ch>
- * @license     http://www.gnu.org/copyleft/gpl.html
  */
-class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInterface
+class ExportXliffViewHelper extends AbstractViewHelper
 {
 
     /**
@@ -40,7 +34,7 @@ class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInte
      * @param bool $expand
      * @return string
      */
-    public function render($extensionKey, $prefix = '', $omitPrefix = false, $expand = false)
+    public function render(string $extensionKey, string $prefix = '', bool $omitPrefix = false, bool $expand = false): string
     {
         return static::renderStatic(
             [
@@ -62,8 +56,9 @@ class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInte
      * @param RenderingContextInterface $renderingContext
      * @return string
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
-        if (TYPO3_MODE === 'FE') {
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
+    {
+        if (self::isFrontendMode()) {
             $languageKey = $GLOBALS['TSFE']->lang;
         } else {
             $languageKey = $GLOBALS['LANG']->lang;
@@ -80,6 +75,14 @@ class ExportXliffViewHelper extends AbstractViewHelper implements CompilableInte
         }
 
         return json_encode($labels);
+    }
+
+    /**
+     * Returns whether the current mode is Frontend
+     */
+    protected static function isFrontendMode(): bool
+    {
+        return ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isFrontend();
     }
 
 }

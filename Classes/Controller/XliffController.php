@@ -14,31 +14,22 @@
 
 namespace Sinso\Translationapi\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Sinso\Translationapi\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * XLIFF controller.
- *
- * @category    Controller
- * @package     TYPO3
- * @subpackage  tx_translationapi
- * @author      Xavier Perseguers <xavier@causal.ch>
- * @license     http://www.gnu.org/copyleft/gpl.html
  */
 class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
-    /**
-     * Export action.
-     *
-     * @param string $extensionKey
-     * @param string $languageKey
-     * @param string $prefix
-     * @return void
-     */
-    public function exportAction($extensionKey, $languageKey, $prefix = '')
+    public function exportAction(): ResponseInterface
     {
+        $extensionKey = $this->request->getArgument('extensionKey');
+        $languageKey = $this->request->getArgument('languageKey');
+        $prefix = $this->request->hasArgument('prefix') ? $this->request->getArgument('prefix') : '';
+
         $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $languageKey);
 
         $omitPrefix = GeneralUtility::_GET('omitPrefix');
@@ -51,8 +42,7 @@ class XliffController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $labels = LocalizationUtility::expandKeys($labels);
         }
 
-        header('Content-Type: application/json');
-        return json_encode($labels);
+        return $this->jsonResponse((string) json_encode($labels));
     }
 
 }

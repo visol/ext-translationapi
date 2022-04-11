@@ -1,18 +1,18 @@
 <?php
+
+use Sinso\Translationapi\Controller\XliffController;
+
 defined('TYPO3_MODE') || die();
 
-$boot = function ($_EXTKEY) {
+(static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Sinso.' . $_EXTKEY,
+        'Sinso.translationapi',
         'API',
         [
-            'Xliff' => 'export',
+            XliffController::class => 'export',
         ],
         [
-            'Xliff' => 'export',
-        ]
+            XliffController::class => 'export',
+        ],
     );
-};
-
-$boot($_EXTKEY);
-unset($boot);
+})();
