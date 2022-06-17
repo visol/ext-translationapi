@@ -2,9 +2,7 @@
   "name": "visol/translationapi",
   "description": "API to fetch translation units.",
   "type": "typo3-cms-extension",
-  "license": "GPL-2.0+",
-  "preferred-install": "dist",
-  "php": ">= 7.4",
+  "license": "GPL-2.0-or-later",
   "require": {
     "typo3/cms-core": "^11"
   },
