@@ -3,38 +3,6 @@
 This extension lets you fetch localized labels from TYPO3. It will automatically
 export labels as JSON from any `locallang.xlf` file, given its extension key.
 
-## Routing
-
-Please add following rewrite rules to your `.htaccess`:
-
-```
-RewriteRule ^t3api/translation/(.*)$ /index.php?eID=routing&route=translationapi/$1 [QSA,L]
-```
-
-or nginx configuration
-
-```
-rewrite ^/t3api/translation/(.*)$ /index.php?eID=routing&route=translationapi/$1 last;
-```
-
-## How-To Use as Web Service
-
-In order to fetch labels from extension `xyz`, call:
-
-```
-/t3api/translation/en/xyz
-```
-
-If you want to only return labels whose key is prefixed by, say, "module", then call:
-
-```
-/t3api/translation/en/xyz/module
-```
-
-This will effectively filter XLIFF keys and keep those starting with "module." (mind
-the period). You may of course use a longer prefix, such as "module.foo", which would
-filter keys starting with "module.foo.".
-
 ## How-To Use within Fluid
 
 This extension is able to export the labels as JSON to be embedded into a HTML snippet:
