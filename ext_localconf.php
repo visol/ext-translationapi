@@ -2,7 +2,7 @@
 
 use Sinso\Translationapi\Controller\XliffController;
 
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 (static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
