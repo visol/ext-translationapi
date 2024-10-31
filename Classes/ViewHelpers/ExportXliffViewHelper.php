@@ -19,7 +19,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class ExportXliffViewHelper extends AbstractViewHelper
 {
-
     /**
      * Exports labels from XLIFF as JSON.
      *

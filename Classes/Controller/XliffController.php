@@ -16,7 +16,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class XliffController extends ActionController
 {
-
     public function exportAction(): ResponseInterface
     {
         $extensionKey = $this->request->getArgument('extensionKey');
