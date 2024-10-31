@@ -24,7 +24,7 @@ class LocalizationUtility
                 $labels = static::extractXliffLabels($languageFileName, $languageKey);
                 if (!empty($prefix)) {
                     $labels = array_filter($labels, function ($key) use ($prefix) {
-                        return GeneralUtility::isFirstPartOfStr($key, $prefix . '.');
+                        return str_starts_with($key, $prefix . '.');
                     }, ARRAY_FILTER_USE_KEY);
                 }
 
