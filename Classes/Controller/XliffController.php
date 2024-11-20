@@ -24,12 +24,12 @@ class XliffController extends ActionController
 
         $labels = LocalizationUtility::getLabels($extensionKey, $prefix, $languageKey);
 
-        $omitPrefix = GeneralUtility::_GET('omitPrefix');
+        $omitPrefix = $this->request->getQueryParams()['omitPrefix'] ?? null;
         if ($omitPrefix === 'yes' && !empty($prefix)) {
             $labels = LocalizationUtility::stripPrefix($labels, $prefix);
         }
 
-        $expand = GeneralUtility::_GET('expand');
+        $expand = $this->request->getQueryParams()['expand'] ?? null;
         if ($expand === 'yes') {
             $labels = LocalizationUtility::expandKeys($labels);
         }

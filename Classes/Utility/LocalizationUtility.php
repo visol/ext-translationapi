@@ -22,7 +22,7 @@ class LocalizationUtility
             $languageFileName = $extensionPath . 'Resources/Private/Language/locallang.xlf';
             if (is_file($languageFileName)) {
                 $labels = static::extractXliffLabels($languageFileName, $languageKey);
-                if (!empty($prefix)) {
+                if ($prefix !== '' && $prefix !== '0') {
                     $labels = array_filter($labels, function ($key) use ($prefix) {
                         return str_starts_with($key, $prefix . '.');
                     }, ARRAY_FILTER_USE_KEY);
