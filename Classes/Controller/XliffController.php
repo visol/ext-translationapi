@@ -11,7 +11,6 @@ namespace Sinso\Translationapi\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Sinso\Translationapi\Utility\LocalizationUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class XliffController extends ActionController
