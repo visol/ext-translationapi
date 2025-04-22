@@ -19,15 +19,8 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class ExportXliffViewHelper extends AbstractViewHelper
 {
-
     /**
      * Exports labels from XLIFF as JSON.
-     *
-     * @param string $extensionKey
-     * @param string $prefix
-     * @param bool $omitPrefix
-     * @param bool $expand
-     * @return string
      */
     public function render(string $extensionKey, string $prefix = '', bool $omitPrefix = false, bool $expand = false): string
     {
@@ -45,19 +38,10 @@ class ExportXliffViewHelper extends AbstractViewHelper
 
     /**
      * Static rendering.
-     *
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     * @return string
      */
     public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
     {
-        if (self::isFrontendMode()) {
-            $languageKey = $GLOBALS['TSFE']->lang;
-        } else {
-            $languageKey = $GLOBALS['LANG']->lang;
-        }
+        $languageKey = self::isFrontendMode() ? $GLOBALS['TSFE']->lang : $GLOBALS['LANG']->lang;
 
         $labels = LocalizationUtility::getLabels($arguments['extensionKey'], $arguments['prefix'], $languageKey);
 

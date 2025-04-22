@@ -4,7 +4,7 @@
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
   "require": {
-    "typo3/cms-core": "^11"
+    "typo3/cms-core": "^11.5 || ^12.4"
   },
   "autoload": {
     "psr-4": {
@@ -14,6 +14,12 @@
   "extra": {
     "typo3/cms": {
       "extension-key": "translationapi"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
     }
   }
 }

@@ -9,9 +9,9 @@ namespace Sinso\Translationapi\Utility;
  * LICENSE.md file that was distributed with this source code.
  */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class LocalizationUtility
 {
@@ -22,9 +22,9 @@ class LocalizationUtility
             $languageFileName = $extensionPath . 'Resources/Private/Language/locallang.xlf';
             if (is_file($languageFileName)) {
                 $labels = static::extractXliffLabels($languageFileName, $languageKey);
-                if (!empty($prefix)) {
+                if ($prefix !== '' && $prefix !== '0') {
                     $labels = array_filter($labels, function ($key) use ($prefix) {
-                        return GeneralUtility::isFirstPartOfStr($key, $prefix . '.');
+                        return str_starts_with($key, $prefix . '.');
                     }, ARRAY_FILTER_USE_KEY);
                 }
 
